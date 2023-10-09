@@ -1,17 +1,18 @@
 # Toy Problems 
-This README provides an overview of the three Javascript codes made in week one code challenge
+It shows the summarry of What I have accomplished in the three problems given to me thatis in the speed marks and tax js files.
 
-## Grade Calculator
+## Grade Analyzer
 ### Purpose 
-The Grade Calculator code allows you to input students marks and calculates a corresponding grade based on the grading scale provided in the question
+This program can be used to assess the academic performance of students. It can help teachers to identify students who are struggling and need additional support. It can also be used by students to track their own progress and identify areas where they need to improve.
 ### Usage
-1. Run the Code
-2. Input the students marks
-3. The code will output a corresponding grade based on the marks inputed and the grading scale.
+1. to interpret and run the code
+2. Enter the students marks
+3. The code will give a feed back according to the information you give it and return the feed back
+
 
 ## Speed Checker
 ### Purpose 
-The Speed Checker code helps determine if a driver's speed is well within the legal limit and calculates the associated penalty points.
+It can be used to ensure road safety by detecting and control speeding. It can be used by the police to enforce speed limits and by drivers to monitor their own speed.
 ### Usage
 1. Execute the code.
 2. Enter the driver's speed when prompted.
@@ -19,10 +20,11 @@ The Speed Checker code helps determine if a driver's speed is well within the le
 
 ## Salary Calculator
 ### Purpose 
-The Salary Calculator code calculates various deductions and taxes from a given salary which includes income tax, national hospital insurance fund (NHIF) deductions, and national social security fund (NSSF) deductions, and provides the net income.
+This program can be used to help people understand their net income after taxes and other deductions. It can be used by employees to budget their money and by employers to calculate payroll.
+
 
 ### Usage 
-1. Run the code.
+1. Run the code and ensure that it is upto precission.
 2. Input the Salary when prompted.
 3. The code will display the following information:
 . Net Tax
@@ -31,4 +33,4 @@ The Salary Calculator code calculates various deductions and taxes from a given 
 . Net income (Salary-Net Tax- NHIF Deduction- Pension)
 
 # Conclusion
-These JavaScript codes are designed for simple grading, speed checking and salary calculations
+These JavaScript codes are designed for simple grading, speed checking and salary calculations and to learn how the way computer analyzaes data in the real world

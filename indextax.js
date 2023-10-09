@@ -1,51 +1,90 @@
-let prompt = require ('prompt-sync')();
-let input = prompt('input salary: ')
-let salary = parseFloat(input)
-//generates a prompt to interact with the user through the terminal
+let prompt = require('prompt-sync')();
+let input = prompt('Enter Net Salary:');
+let payTax = parseFloat(input);
 
 
-const pay = salary  ;
-function netTax () {// calculates the net tax 
-if (pay <= 24000) return (pay * 0.1) 
-else if (24001<= pay  && pay <= 32333) return (pay * 0.25)
-else if (32334<= pay && pay <=500000 ) return (pay * 0.3)
-else if (500001 <= pay && pay <=800000) return (pay * 0.325)
-else if (pay > 800000) return (pay * 0.35) 
-}
-console.log (("Net tax: ")+(netTax(salary)))
+// Calculating the payee according to the information given in the link
 
-function nhif () { //calculates nhif fees
-    if (pay < 5999) return 150
-    if (6000 <= pay && pay <=7999) return 300
-    if (8000 <= pay && pay <= 11999) return 400
-    if (12000 <= pay && pay <= 14999) return 500
-    if (15000 <= pay && pay <= 19999) return 600
-    if (20000 <= pay && pay <= 24999) return 750
-    if (25000 <= pay && pay <= 29999) return 850
-    if (30000 <= pay && pay <= 34999) return 900
-    if (35000 <= pay && pay <= 39999) return 950
-    if (40000 <= pay && pay <= 44999) return 1000
-    if (45000 <= pay && pay <= 49999) return 1100
-    if (50000 <= pay && pay <= 59999) return 1200
-    if (60000 <= pay && pay <= 69999) return 1300
-    if (70000 <= pay && pay <= 79000) return 1400
-    if (80000 <= pay && pay <= 89999) return 1500
-    if (100000 <= pay && pay <= 99999) return 1600
-    else if (pay > 100000) return 1700
-
+function calculatePayee(basicSalary) {
+  if (basicSalary <= 24000) {
+    return basicSalary * 0.1;
+  } else if (basicSalary <= 32333) {
+    return 2400 + (basicSalary - 24000) * 0.25;
+  } else if (basicSalary <= 500000) {
+    return 4813.33 + (basicSalary - 32333) * 0.3;
+  } else if (basicSalary <= 800000) {
+    return 141000 + (basicSalary - 500000) * 0.325;
+  } else {
+    return 237500 + (basicSalary - 800000) * 0.35;
+  }
 }
 
-console.log(("NHIF: ") + (nhif(salary)))
-
-function nssf() { //calculates  the nssf expense
-    const pension = (pay * 0.06)
-    return pension
-
+// Calculate the NHIF contribution based on the basic salary.
+function calculateNhif(basicSalary) {
+  /* Multiple
+line
+commennt*///it is determining the amount to be taken out according to what yu earn as your basic salary
+  if (basicSalary <= 5999) {
+    return 150;
+  } else if (basicSalary <= 7999) {
+    return 300;
+  } else if (basicSalary <= 11999) {
+    return 400;
+  } else if (basicSalary <= 14999) {
+    return 500;
+  } else if (basicSalary <= 19999) {
+    return 600;
+  } else if (basicSalary <= 24999) {
+    return 750;
+  } else if (basicSalary <= 29999) {
+    return 850;
+  } else if (basicSalary <= 34999) {
+    return 900;
+  } else if (basicSalary <= 39999) {
+    return 950;
+  } else if (basicSalary <= 44999) {
+    return 1000;
+  } else if (basicSalary <= 49999) {
+    return 1100;
+  } else if (basicSalary <= 59999) {
+    return 1200;
+  } else if (basicSalary <= 69999) {
+    return 1300;
+  } else if (basicSalary <= 79999) {
+    return 1400;
+  } else if (basicSalary <= 89999) {
+    return 1500;
+  } else if (basicSalary <= 99999) {
+    return 1600;
+  } else {
+    return 1700;
+  }
 }
 
-console.log (("Pension: ") +(nssf()))
+// Calculate the NSSF contribution based on the basic salary you were given
+function calculateNssf(basicSalary) {
+  return basicSalary * 0.06;
+}
 
+/* Multiple
+line
+commennt*///Calculate the net salary based on the basic salary, benefits, and deductions each in its own step
+function calculateNetSalary(basicSalary, benefits) {
+  const grossSalary = basicSalary + benefits;
+  const payee = calculatePayee(basicSalary);
+  const nhif = calculateNhif(basicSalary);
+  const nssf = calculateNssf(basicSalary);
+  const totalDeductions = payee + nhif + nssf;
+  const netSalary = grossSalary - totalDeductions;
+  return netSalary;
+}
 
-console.log (("Net Income: ") + (salary - (netTax() + nhif() + nssf())))
+// Get the basic salary and benefits from the user.
+const basicSalary = prompt("Enter basic salary: ");
+const benefits = prompt("Enter benefits: ");
 
-return  + (salary - (netTax()+ nhif() +nssf()))
+// Calculate the net salary. of the whole thing
+const netSalary = calculateNetSalary(basicSalary, benefits);
+
+// Display the net salary of the calculation to the one using it
+console.log("Net salary:", netSalary);
